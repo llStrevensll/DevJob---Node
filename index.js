@@ -8,6 +8,7 @@ const router = require('./routes');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session); //pasa la session al paquete de connect-mongo
+const bodyParser = require('body-parser');
 
 //Puerto local
 require('dotenv').config({ path: 'variables.env' });
@@ -15,10 +16,15 @@ require('dotenv').config({ path: 'variables.env' });
 //App con express
 const app = express();
 
+//Habilitar bodyParser para leer datos del formulario
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+
 //Habilitar el template engine (handlebars)
 app.engine('handlebars',
     exphbs({
-        defaultLayout: 'layout' //Especificar el layout
+        defaultLayout: 'layout', //Especificar el layout
+        helpers: require('./helpers/handlebars'), //scripts que se enlazaran con handlebars para su posterior visualizacion
     })
 );
 app.set('view engine', 'handlebars');

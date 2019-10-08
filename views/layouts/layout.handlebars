@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,700,900&display=swap" rel="stylesheet">{{!google fonts}}
+    <link rel="stylesheet" href="/css/trix.css">
     <link rel="stylesheet" href="/css/app.css">
     <title>{{nombrePagina}}</title>{{!nombrePagina - variable}}
 </head>
@@ -40,5 +41,7 @@
 
         {{{body}}} {{! Triple llave para imprimir el html -> body desde home.handlebars}}
     </div>
+    <script src="/js/trix.js"></script>
+    <script src="/dist/bundle.js"></script>{{! todo lo escrito en el app se genera en el bundle para ser parte de la aplicacion}}
 </body>
 </html>
