@@ -1,5 +1,6 @@
 
-- Node.js - Backend
+- Controllers: Node.js - Backend
 - Model View Controller - MVC
-- Template Engine Handlebars:  https://handlebars-draft.knappi.org/
-
+- Views: Template Engine Handlebars:  https://handlebars-draft.knappi.org/
+- Webpack
+- Models: Mongoose
