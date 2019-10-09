@@ -37,10 +37,18 @@
             <a href="/vacantes/nueva" class="btn btn-azul"> Publicar Nueva Vacante</a>
         {{/if}}
     </header>
+    
     <div class="contenido-principal contenedor">
-
-        {{{body}}} {{! Triple llave para imprimir el html -> body desde home.handlebars}}
+        {{#if mensajes}} {{!mensajes de indesx.js}}
+            <div class="alertas">
+                {{#mostrarAlertas mensajes}} {{!metodo de helpers.js}}
+                    <li>do</li>
+                {{/mostrarAlertas}}
+            </div>
+        {{/if}}
+        {{{body}}}  {{! Triple llave para imprimir el html -> body desde home.handlebars}}
     </div>
+    
     <script src="/js/trix.js"></script>
     <script src="/dist/bundle.js"></script>{{! todo lo escrito en el app se genera en el bundle para ser parte de la aplicacion}}
 </body>

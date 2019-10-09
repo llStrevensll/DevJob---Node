@@ -9,6 +9,8 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session); //pasa la session al paquete de connect-mongo
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
 
 //Puerto local
 require('dotenv').config({ path: 'variables.env' });
@@ -19,6 +21,11 @@ const app = express();
 //Habilitar bodyParser para leer datos del formulario
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
+
+//Validacion de campos
+app.use(expressValidator());
+
+
 
 //Habilitar el template engine (handlebars)
 app.engine('handlebars',
@@ -43,6 +50,15 @@ app.use(session({
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
+
+//Alertar y flash messages
+app.use(flash());
+
+//Crear middleware
+app.use((req, res, next) => {
+    res.locals.mensajes = req.flash(); //siempre que haya un flash que enviar se llenaran variables locales
+    next();
+});
 
 //Rutas del aplicativo
 app.use('/', router());
