@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (skills) {
         skills.addEventListener('click', agregarSkills); //metodo para agregar skills
+
+        //Estando en editar llamar la función
+        skillsSeleccionados();
     }
 });
 
@@ -20,7 +23,19 @@ const agregarSkills = e => {
     }
     //console.log(skillsSet);
 
-    const skillsArray = [...skillsSet]
+    const skillsArray = [...skillsSet]; //convertir en arreglo
     document.querySelector('#skills').value = skillsArray;
 
+}
+
+const skillsSeleccionados = () => {
+    const seleccionadas = Array.from(document.querySelectorAll('.lista-conocimientos .activo')); //Convertir en arreglo ya que es un NodeList
+
+    seleccionadas.forEach(seleccionada => {
+        skillsSet.add(seleccionada.textContent);
+    })
+
+    //Inyectarlo en el hidden
+    const skillsArray = [...skillsSet]; //convertir en arreglo
+    document.querySelector('#skills').value = skillsArray;
 }
