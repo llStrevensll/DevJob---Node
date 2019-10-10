@@ -53,5 +53,11 @@ exports.crearUsuario = async(req, res, next) => {
         req.flash('error', error); //toma el error del modelo-> no existe email
         res.redirect('crear-cuenta');
     }
+}
 
+//formulario para iniciar sesion
+exports.formIniciarSesion = (req, res) => {
+    res.render('iniciar-sesion', {
+        nombrePagina: 'Iniciar Sesión devJobs'
+    });
 }

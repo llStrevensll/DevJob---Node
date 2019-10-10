@@ -34,7 +34,7 @@ usuariosSchema.pre('save', async function(next) {
     next();
 });
 
-//Informar que el correo ya existe
+//Informar con alerta que el correo ya existe
 usuariosSchema.post('save', function(error, doc, next) {
     if (error.name === 'MongoError' && error.code === 11000) {
         next('Ese correo ya esta registrado');
@@ -43,5 +43,12 @@ usuariosSchema.post('save', function(error, doc, next) {
     }
 });
 
+
+// Autenticar Usuarios
+usuariosSchema.methods = {
+    compararPassword: function(password) {
+        return bcrypt.compareSync(password, this.password); //comparar password ingresado con passwors de BD, retorna true, false
+    }
+}
 
 module.exports = mongoose.model('Usuarios', usuariosSchema);
