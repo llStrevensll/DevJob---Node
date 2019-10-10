@@ -36,6 +36,11 @@ module.exports = () => {
         vacantesController.editarVacante
     ); //guardar cambios de edicion
 
+    //Eliminar Vacantes
+    router.delete('/vacantes/eliminar/:id',
+        vacantesController.eliminarVacante
+    );
+
     //Crear cuentas
     router.get('/crear-cuenta', usuariosController.formCrearCuenta);
     router.post('/crear-cuenta',
