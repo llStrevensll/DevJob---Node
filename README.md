@@ -4,3 +4,13 @@
 - Views: Template Engine Handlebars:  https://handlebars-draft.knappi.org/
 - Webpack
 - Models: Mongoose
+- Creacion Vacantes
+- Visualizar Vacantes desde BD
+- Edicion Vacantes
+- Creacion de Usuarios
+- Eliminar Vacantes
+- Autenticacion Usuarios
+- Administracion
+- Subir Img Perfil
+- Formulario contacto
+- Generar nueva contraseña
