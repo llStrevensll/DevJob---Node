@@ -12,6 +12,9 @@ exports.formularioNuevaVacante = (req, res) => {
 exports.agregarVacante = async(req, res) => {
     const vacante = new Vacante(req.body);
 
+    //Usuario autor de la vacante
+    vacante.autor = req.user._id;
+
     //Crear arreglo de habilidades(skills) --Es un string seprado por comas, por ello se usa split para dividir y convertir en arreglo
     vacante.skills = req.body.skills.split(',');
 

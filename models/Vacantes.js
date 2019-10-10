@@ -44,7 +44,12 @@ const vacantesSchema = new mongoose.Schema({
         nombre: String,
         email: String,
         cv: String
-    }]
+    }],
+    autor: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Usuarios',
+        required: 'El autor es obligatorio'
+    }
 });
 
 //Antes de guardar en la BD --> .pre middware de mongoose 
