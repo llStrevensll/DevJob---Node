@@ -27,6 +27,9 @@
         {{#if cerrarSesion}}{{! cerrarSession nombre de authController.js}}
             <div class="cerrar-sesion">
                 <p>Hola! {{nombre}}</p>
+                {{#if imagen}}{{!authController imagen}}
+                    <img src="/uploads/perfiles/{{imagen}}" class="admin-perfil">
+                {{/if}}
                 <a href="/administracion">Administración</a>
                 <a href="/cerrar-sesion">Cerrar Sesión</a>
             </div>

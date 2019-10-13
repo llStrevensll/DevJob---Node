@@ -19,7 +19,8 @@ const usuariosSchema = new mongoose.Schema({
         trim: true
     },
     token: String,
-    expira: Date
+    expira: Date,
+    imagen: String //nose guarda la imagen como tal, sino una referencia
 });
 
 //Método para hashear los passwords
