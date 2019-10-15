@@ -15,6 +15,7 @@
 - Formulario contacto
 - Generar nueva contraseña
 - Manejo de errores
+- Realizar busqueda
 
 ***App***
 <p align="center">
