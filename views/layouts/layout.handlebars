@@ -17,9 +17,9 @@
 
         {{#if barra}}
             <div class="buscador">
-                <form action="#">
-                    <input type="text" class="buscar"> {{!textField}}
-                    <input type="submit" class="Buscar">{{!enviar (lupa)}}
+                <form action="/buscador" method="POST">
+                    <input type="text" name="q" class="buscar"> {{!textField}}
+                    <input type="submit" value="Buscar">{{!enviar (lupa)}}
                 </form>
             </div>
         {{/if}}

@@ -11,7 +11,9 @@ const MongoStore = require('connect-mongo')(session); //pasa la session al paque
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
+const createError = require('http-errors');
 const passport = require('./config/passport');
+
 
 //Puerto local
 require('dotenv').config({ path: 'variables.env' });
@@ -68,6 +70,25 @@ app.use((req, res, next) => {
 //Rutas del aplicativo
 app.use('/', router());
 
+//404 pagina no existente
+app.use((req, res, next) => {
+    next(createError(404, 'No Encontrado')); //(tipo de error, mensaje)
+});
+
+//Administración de los errores
+app.use((error, req, res) => {
+    res.locals.mensaje = error.message;
+    const status = error.status || 500; //sino hay error, entonces usa 500
+    res.locals.status = status;
+    res.status(status);
+    res.render('error');
+});
+
+//Dejar que heroku asigne el puerto
+const host = '0.0.0.0';
+const port = process.env.PORT;
 
 //Puerto a escuchar
-app.listen(process.env.PUERTO);
+app.listen(port, host, () => {
+    console.log('El servidor esta funcionando');
+});
